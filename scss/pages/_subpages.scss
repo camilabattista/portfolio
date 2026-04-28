@@ -1,0 +1,27 @@
+@use '../base/variables' as *;
+
+// MOBILE FIRST
+.subpage {
+    padding-top: 100px;
+}
+// TABLET / DESKTOP
+@media (min-width: 767.9px) {
+    .subpage {
+        padding: 60px 80px 0px 80px;
+        margin-top: 40px;
+
+        .subpage__card-container {
+            border-bottom: 1px solid $color-secondary;
+        }
+    }
+}
+
+@media (min-width: 991.9px) {
+    .subpage {
+        padding: 60px 80px 0px 80px;
+
+        .subpage__card-container {
+            padding: 50px 0px 50px 0px;
+        }
+    }
+}

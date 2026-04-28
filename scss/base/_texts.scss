@@ -1,0 +1,28 @@
+@use '../base/variables' as *;
+@use '../mixins' as *;
+
+// HOMEPAGE SECTION TITLES
+.section__title {
+    @include section-title;
+}
+
+// HOMEPAGE / CARDS TITLES
+.works__card-name {
+    @include homepage-card-title;
+}
+
+// HOMEPAGE / CARD COPY TEXT
+
+.works__card-copy {
+    @include homepage-card-copy;
+}
+
+// HOMEPAGE / LATEST WORKS TITLE
+.index__latest-works-title {
+    @include latest-works-title;
+}
+
+// WORK SHEETS / RELATED WORKS TITLE
+.sheet__subtitle {
+    @include related-works-title;
+}

@@ -1,0 +1,59 @@
+// IMAGE GRID WRAPPER (takes remaining space between header & footer)
+.image-grid-wrapper {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    width: 100%;
+}
+
+// GRID (4 COLUMNS - ALL EQUAL WIDTH))
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    height: 100%;
+    gap: 0;
+}
+
+// EACH IMAGE ITEM FILLS ITS GRID
+.image-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+// IMAGES ON HOVER
+.image-item {
+    transition: all 0.3s ease;
+    
+    &:hover img {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+}
+
+// Responsive: stack vertically on mobile
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
+// Optional: 2x2 grid on tablets
+@media (min-width: 769px) and (max-width: 1024px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+

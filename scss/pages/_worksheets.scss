@@ -1,0 +1,44 @@
+@use '../base/variables' as *;
+
+
+
+// MOBILE FIRST
+.sheet__main {
+    margin-top: 100px;
+    background-color: $color-background;
+}
+
+.project__text {
+    padding: 50px 50px 50px 50px;
+
+    .project__title {
+        font-weight: 600;
+        font-size: 24px;
+        color: $color-text-primary;
+        margin-bottom: 24px;
+    }
+
+    .project__info {
+        color: $color-secondary;
+        font-size: 14px;
+        line-height: 8px;
+    }
+}
+
+.related-works {
+text-align: center;
+color: $color-text-primary;
+}
+
+// TABLET / DESKTOP
+@media (min-width: 768px) {
+    .work-sheet {
+        padding: 0px 80px 0px 80px;
+    }
+}
+
+@media (min-width: 992px) {
+    .work-sheet {
+        padding: 0px 180px 0px 180px;
+    }
+}

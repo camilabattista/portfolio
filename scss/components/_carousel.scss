@@ -1,0 +1,120 @@
+@use '../base/variables' as *;
+// CAROUSEL STYLES - Multiple items
+.carousel-container {
+    margin: 2rem 0;
+    padding: 0 1rem;
+    
+    .carousel {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        
+        .carousel-inner {
+            .carousel-item {
+                // Display multiple items
+                &.active,
+                &.carousel-item-next,
+                &.carousel-item-prev {
+                    display: flex;
+                }
+                
+                // Active item
+                &.active {
+                    display: flex;
+                }
+                
+                // Next/prev transitions
+                &.carousel-item-next,
+                &.carousel-item-prev {
+                    display: flex;
+                }
+                
+                .carousel-item-inner {
+                    display: flex;
+                    width: 100%;
+                    
+                    .carousel-item-img {
+                        flex: 0 0 50%;
+                        max-width: 50%;
+                        padding: 0 5px;
+                        
+                        img {
+                            width: 100%;
+                            height: auto;
+                            max-height: 450px;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+        
+
+        // Controls
+        .carousel-control-prev,
+        .carousel-control-next {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            width: 8%;
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    
+    // Show controls on hover
+    &:hover .carousel-control-prev,
+    &:hover .carousel-control-next {
+        opacity: 0.5;
+    }
+}
+
+// Responsive: Single image on mobile
+@media (max-width: 768px) {
+    .carousel-container {
+        .carousel .carousel-inner .carousel-item {
+            .carousel-item-inner {
+                .carousel-item-img {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    
+                    img {
+                        max-height: 350px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Desktop adjustments
+@media (min-width: 769px) and (max-width: 992px) {
+    .carousel-container {
+        .carousel .carousel-inner .carousel-item {
+            .carousel-item-inner .carousel-item-img img {
+                max-height: 400px;
+            }
+        }
+    }
+}
+
+@media (min-width: 993px) {
+    .carousel-container {
+        .carousel .carousel-inner .carousel-item {
+            .carousel-item-inner .carousel-item-img img {
+                max-height: 500px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .carousel-container {
+        .carousel .carousel-inner .carousel-item {
+            .carousel-item-inner .carousel-item-img img {
+                max-height: 550px;
+            }
+        }
+    }
+}
