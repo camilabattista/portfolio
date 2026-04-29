@@ -1,4 +1,6 @@
-// IMAGE GRID WRAPPER (takes remaining space between header & footer)
+@use '../base/variables' as *;
+
+// IMAGE GRID WRAPPER
 .image-grid-wrapper {
     flex: 1;
     min-height: 0;
@@ -15,45 +17,140 @@
     gap: 0;
 }
 
-// EACH IMAGE ITEM FILLS ITS GRID
+// IMAGE ITEM
 .image-item {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    cursor: pointer;
     
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        transition: transform 0.4s ease;
     }
 }
 
-// IMAGES ON HOVER
-.image-item {
-    transition: all 0.3s ease;
+// OVERLAY
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: height 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+// OVERLAY TEXT
+.overlay-content {
+    color: $color-text-primary;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease 0.1s;
     
-    &:hover img {
+    h3 {
+        font-family: $font-family;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+    }
+    
+    p {
+        font-family: $font-family;
+        font-size: 1rem;
+        margin-bottom: 0;
+        opacity: 0.9;
+        padding-bottom: 15px;
+    }
+}
+
+// HOVER
+.image-item:hover {
+    .image-overlay {
+        height: 100%;
+    }
+    
+    .overlay-content {
+        transform: translateY(0);
+    }
+    
+    img {
         transform: scale(1.05);
-        transition: transform 0.3s ease;
     }
 }
 
-// Responsive: stack vertically on mobile
-@media (max-width: 768px) {
+
+@media (max-width: 998.9px) {
+    .header__nav {
+        position: relative !important;
+    }
+    
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .image-grid-wrapper {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
     .image-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .image-item {
+        flex: 1;
+        min-height: 0;
+        
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .overlay-content {
+        padding: 15px;
+        
+        h3 {
+            font-size: 1.2rem;
+        }
+        
+        p {
+            font-size: 0.85rem;
+        }
     }
 }
 
-// Optional: 2x2 grid on tablets
-@media (min-width: 769px) and (max-width: 1024px) {
-    .image-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
+@media (max-width: 480px) {
+    .overlay-content {
+        padding: 10px;
+        
+        h3 {
+            font-size: 1rem;
+        }
+        
+        p {
+            font-size: 0.75rem;
+        }
     }
 }
-
-
