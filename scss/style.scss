@@ -1,12 +1,15 @@
 @use 'pages/index' as *;
 @use 'base/reset' as *;
+@use 'components/navbar-subpages' as *;
 @use 'components/carousel' as *;
 @use 'components/videos' as *;
 @use 'components/header' as *;
 @use 'components/footer' as *;
 @use 'components/buttons' as *;
+@use 'components/cards' as *;
 @use 'pages/worksheets' as *;
 @use 'pages/subpages' as *;
+@use 'pages/profile' as *;
 @use 'pages/index' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
