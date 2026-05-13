@@ -3,15 +3,16 @@
 // ============================================
 // VARIABLES
 // ============================================
-$bubble-max-width: 100%;  // Cambiado de 1200px a 100%
+$bubble-max-width: 100%;
 $bubble-border-radius: 18px;
 $nav-footer-border-radius: 18px;
 $navbar-height: 52px;
 $footer-height: 52px;
 $gap-between: 8px;
-$horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
+$horizontal-margin: 8px;
+
 // ============================================
-// BODY
+// BODY - SIN SCROLL
 // ============================================
 .about-body {
     margin: 0;
@@ -26,7 +27,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
 }
 
 // ============================================
-// NAVBAR CON BURBUJA (ancho completo)
+// NAVBAR
 // ============================================
 .about-header {
     position: relative;
@@ -36,7 +37,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
     z-index: 1000;
     display: flex;
     justify-content: center;
-    padding: 0 $horizontal-margin;  // Margen lateral
+    padding: 0 $horizontal-margin;
     flex-shrink: 0;
     margin-bottom: $gap-between;
 }
@@ -126,14 +127,14 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
 }
 
 // ============================================
-// MAIN CONTENT - OCUPA ESPACIO RESTANTE
+// MAIN CONTENT - OCUPA TODO EL ESPACIO
 // ============================================
 .about-main {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $gap-between $horizontal-margin;  // Margen lateral y vertical entre burbujas
+    padding: $gap-between $horizontal-margin;
     min-height: 0;
 }
 
@@ -179,13 +180,14 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
         padding: 30px;
         z-index: 2;
         height: 100%;
-        overflow-y: auto;
+        overflow: hidden;  // ← Sin scroll interno
+        align-items: center;
         
         @media (max-width: 968px) {
             grid-template-columns: 1fr;
-            gap: 30px;
-            padding: 25px;
-            overflow-y: visible;
+            gap: 20px;
+            padding: 20px;
+            overflow: hidden;  // ← Sin scroll en tablet/móvil
         }
     }
     
@@ -205,7 +207,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
 }
 
 // ============================================
-// COLUMNA IZQUIERDA - IMAGEN CUADRADA
+// COLUMNA IZQUIERDA - IMAGEN
 // ============================================
 .about-bubble__image-col {
     width: 100%;
@@ -214,6 +216,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
     align-items: center;
 }
 
+// Estilo desktop (imagen cuadrada)
 .about-bubble__image {
     width: 100%;
     max-width: 500px;
@@ -223,17 +226,6 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
     border-radius: 20px;
     display: block;
     margin: 0 auto;
-    
-    @media (max-width: 968px) {
-        max-width: 220px;
-    }
-}
-
-.about-bubble__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;  // ← Centra verticalmente ambas columnas
 }
 
 // ============================================
@@ -241,6 +233,8 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
 // ============================================
 .about-bubble__text-col {
     width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .about-bubble__title {
@@ -249,10 +243,6 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
     margin-bottom: 16px;
     color: $color-text-primary;
     letter-spacing: -0.02em;
-    
-    @media (max-width: 768px) {
-        font-size: 1.6rem;
-    }
 }
 
 .about-bubble__bio p {
@@ -278,6 +268,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
         font-size: 0.8rem;
         margin-bottom: 6px;
         color: rgba(255, 255, 255, 0.7);
+        overflow-wrap: break-word;
     }
 }
 
@@ -285,6 +276,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
     display: flex;
     gap: 16px;
     margin-top: 12px;
+    flex-wrap: wrap;
     
     &-link {
         color: $color-text-primary;
@@ -300,10 +292,10 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
 }
 
 // ============================================
-// FOOTER CON BURBUJA (ancho completo)
+// FOOTER
 // ============================================
 .about-footer {
-    padding: 0 $horizontal-margin $gap-between;  // Margen lateral
+    padding: 0 $horizontal-margin $gap-between;
     background: transparent;
     display: flex;
     justify-content: center;
@@ -385,10 +377,10 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
 }
 
 // ============================================
-// RESPONSIVE
+// RESPONSIVE GENERAL
 // ============================================
 @media (max-width: 768px) {
-    $horizontal-margin: 12px;  // Margen más pequeño en móvil
+    $horizontal-margin: 12px;
     
     .about-header { padding: 0 12px; }
     .about-main { padding: $gap-between 12px; }
@@ -399,53 +391,56 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
     .nav-bubble__item { padding-left: 20px; font-size: 10px; }
     
     .footer-bubble__inner { padding: 6px 16px; }
-    
-    .about-bubble__inner {
-        padding: 20px;
-    }
 }
 
-
-
-
-
-
-
-
-
-
 // ============================================
-// RESPONSIVE: TABLET Y MÓVIL (una columna)
+// RESPONSIVE: TABLET (768px a 1024px)
 // ============================================
-
-// Tablet (768px a 1024px)
 @media (min-width: 769px) and (max-width: 1024px) {
     .about-bubble__inner {
-        grid-template-columns: 1fr;  // Una sola columna
-        gap: 30px;
-        padding: 30px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
+        overflow: hidden;
     }
     
+    // Imagen horizontal: ocupa ancho, altura reducida
     .about-bubble__image {
-        max-width: 300px;  // Imagen más grande en tablet
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 180px;      // ← Altura máxima pequeña (horizontal)
+        aspect-ratio: 16 / 9;   // ← Proporción horizontal
+        object-fit: cover;
         margin: 0 auto;
+        border-radius: 16px;
     }
 
-     // Título
     .about-bubble__title {
-        font-size: 1.2rem;  // Reducido de 2rem
-        margin-bottom: 12px;
-        text-align: center;  // Centrado (opcional)
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        text-align: center;
     }
     
-    // Párrafos
     .about-bubble__bio p {
-        font-size: 0.72rem;
-        line-height: 1.45;
-        margin-bottom: 12px;
-        text-align: left;  // Izquierda para mejor legibilidad
+        font-size: 0.75rem;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        text-align: left;
     }
-
+    
+    .about-bubble__contact {
+        margin-top: 12px;
+        padding-top: 10px;
+        
+        h3 { font-size: 0.9rem; }
+        p { font-size: 0.75rem; }
+    }
+    
+    .about-bubble__social {
+        gap: 12px;
+        &-link { font-size: 1rem; }
+    }
 }
 
 // ============================================
@@ -454,52 +449,57 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
 @media (max-width: 768px) {
     .about-bubble__inner {
         grid-template-columns: 1fr;
-        gap: 25px;
-        padding: 20px;
+        gap: 12px;
+        padding: 16px;
+        overflow: hidden;
     }
     
+    // Imagen horizontal: ocupa ancho completo, altura reducida
     .about-bubble__image {
-        max-width: 220px;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 160px;      // ← Altura máxima pequeña
+        aspect-ratio: 16 / 9;   // ← Proporción horizontal ancha
+        object-fit: cover;
+        margin: 0 auto;
+        border-radius: 14px;
     }
     
-    // Título
     .about-bubble__title {
-        font-size: 1.5rem;  // Reducido de 2rem
-        margin-bottom: 12px;
-        text-align: center;  // Centrado (opcional)
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        text-align: center;
     }
     
-    // Párrafos
     .about-bubble__bio p {
-        font-size: 0.85rem;
-        line-height: 1.45;
-        margin-bottom: 12px;
-        text-align: left;  // Izquierda para mejor legibilidad
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        text-align: left;
     }
     
-    // Sección de contacto
     .about-bubble__contact {
-        margin-top: 16px;
-        padding-top: 12px;
+        margin-top: 12px;
+        padding-top: 8px;
         
         h3 {
-            font-size: 1rem;  // Reducido
-            text-align: center;  // Centrado
+            font-size: 0.9rem;
+            text-align: center;
         }
         
         p {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-align: center;
         }
     }
     
-    // Iconos sociales
     .about-bubble__social {
-        justify-content: center;  // Centrar iconos
-        gap: 24px;
+        justify-content: center;
+        gap: 16px;
         
         &-link {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
     }
 }
