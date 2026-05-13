@@ -1,21 +1,5 @@
 @use '../base/variables' as *;
 
-.footer__nav {
+// ALL FOOTER STYLES ARE HERE
 
-    .footer__nav-text {
-        color: $color-text-primary;
-        font-family: $font-family;
-        text-decoration: none;
-
-    }
-}
-
-@media (max-width: 767.9px) {
-    .footer__nav {
-        text-align: center;
-
-        .footer__nav-text {
-            font-size: 14px;
-        }
-    }
-}
+// HOMEPAGE | FOOTER

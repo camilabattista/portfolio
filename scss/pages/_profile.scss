@@ -55,11 +55,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
         right: -1px;
         bottom: -1px;
         border-radius: calc($nav-footer-border-radius + 1px);
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.25),
-            rgba(78, 205, 196, 0.15),
-            rgba(255, 230, 109, 0.25)
-        );
+        background: $bubble-gradient-background;
         z-index: 0;
         transition: opacity 0.3s ease;
     }
@@ -80,10 +76,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
         right: 0;
         bottom: 0;
         border-radius: $nav-footer-border-radius;
-        background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.08) 0%,
-            transparent 70%
-        );
+        background: $bubble-gradient-background;
         opacity: 0.5;
         z-index: 1;
         pointer-events: none;
@@ -170,11 +163,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
         right: -1px;
         bottom: -1px;
         border-radius: calc($bubble-border-radius + 1px);
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.25),
-            rgba(78, 205, 196, 0.15),
-            rgba(255, 230, 109, 0.25)
-        );
+        background: $bubble-gradient-background;
         z-index: 0;
         transition: opacity 0.3s ease;
     }
@@ -207,10 +196,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
         right: 0;
         bottom: 0;
         border-radius: $bubble-border-radius;
-        background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.06) 0%,
-            transparent 70%
-        );
+        background: $bubble-gradient-background;
         opacity: 0.5;
         z-index: 1;
         pointer-events: none;
@@ -339,11 +325,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
         right: -1px;
         bottom: -1px;
         border-radius: calc($nav-footer-border-radius + 1px);
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.2),
-            rgba(78, 205, 196, 0.1),
-            rgba(255, 230, 109, 0.2)
-        );
+        background: $bubble-gradient-background;
         z-index: 0;
         transition: opacity 0.3s ease;
     }
@@ -364,10 +346,7 @@ $horizontal-margin: 8px;  // Margen lateral (ajusta este valor)
         right: 0;
         bottom: 0;
         border-radius: $nav-footer-border-radius;
-        background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.06) 0%,
-            transparent 70%
-        );
+        background: $bubble-gradient-background;
         opacity: 0.4;
         z-index: 1;
         pointer-events: none;

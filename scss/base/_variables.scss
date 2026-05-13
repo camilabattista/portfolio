@@ -1,4 +1,5 @@
-$color-background: #291E1A;
+// COLORS
+$color-background: #3C2B26;
 $color-button-secondary: #283618;
 $color-button-primary: #606C39;
 $color-secundary-orange: #78290F;
@@ -6,4 +7,23 @@ $color-dark: #232323;
 $color-text-primary: #FFECD1;
 $color-secondary: #818181;
 $color-muted: #e9ecef;
+
+$bubble-gradient-background: linear-gradient(90deg, 
+    rgba(255, 107, 107, 0.25) 0%,
+    rgba(255, 107, 107, 0.12) 15%,
+    rgba(188, 158, 148, 0.1) 30%,
+    rgba(188, 158, 148, 0.1) 70%,
+    rgba(255, 107, 107, 0.12) 85%,
+    rgba(255, 107, 107, 0.25) 100%
+);
+
+// FONTS
 $font-family: 'Barlow', sans-serif;
+$font-logo: 'Cormorant Garamond', serif;
+
+// LAYOUTS
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');

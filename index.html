@@ -3,108 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camila Battista - Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Camila Battista | Portfolio</title>
+    
+    <!-- BOOTSTRAP 4.3 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <!-- BOOTSTRAP-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        <!-- FONT AWESOME -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-        <!-- STYLE.CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        <title>Camila Battista  |  Video Editor</title>
+    <!-- STYLE.CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="home-body">
 
-    <!-- NAV BAR -->
-    <header>
-        <nav class="header__nav" aria-label="Main navigation">
-            <ul class="header__menu" role="menubar">
-                <li class="header__menu-logo" role="none">
-                    <a class="header__link" href="#home" role="menuitem" tabindex="0">Camila<br aria-hidden="true"/>Battista</a>
-                </li>
-            </ul>
-            <ul class="header__menu" role="menubar">
-                <li class="header__menu-item" role="none">
-                    <a class="header__link" href="#works" role="menuitem" tabindex="0">Trabajos</a>
-                </li>
-                <li class="header__menu-item" role="none">
-                    <a class="header__link" href="perfil/perfil.html" role="menuitem" tabindex="0">Perfil</a>
-                </li>
-                <li class="header__menu-item" role="none">
-                    <a class="header__link" href="#contact" role="menuitem" tabindex="0">Contacto</a>
-                </li>
-            </ul>
-        </nav>
+    <!-- NAV BAR  -->
+    <header class="home-header">
+        <div class="nav-bubble">
+            <div class="nav-bubble__inner">
+                <nav class="nav-bubble__nav" aria-label="Main navigation">
+                    <ul class="nav-bubble__menu" role="menubar">
+                        <li class="nav-bubble__logo" role="none">
+                            <a class="nav-bubble__link" href="#home" role="menuitem" tabindex="0">Camila Battista</a>
+                        </li>
+                    </ul>
+                    <ul class="nav-bubble__menu" role="menubar">
+                        <li class="nav-bubble__item" role="none">
+                            <a class="nav-bubble__link" href="#works" role="menuitem" tabindex="0">Trabajos</a>
+                        </li>
+                        <li class="nav-bubble__item" role="none">
+                            <a class="nav-bubble__link" href="perfil/perfil.html" role="menuitem" tabindex="0">Perfil</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="nav-bubble__glow"></div>
+        </div>
     </header>
 
-    <!-- MAIN PAGE'S CONTENT -->
-    <div class="image-grid-wrapper">
-            <div class="image-grid">    
+    <!-- MAIN CONTENT -->
+    <main class="home-main">
+        <div class="home-container">
+            <div class="home-bubble">
+                <div class="home-bubble__inner">
+                    <div class="image-grid-wrapper">
+                        <div class="image-grid">
+                            
+                            <div class="image-item">
+                                <img src="assets/images/index/solapa_df.jpeg" alt="Dirección de fotografía">
+                                <div class="image-overlay">
+                                    <div class="overlay-content">
+                                        <h3>DIRECCIÓN DE FOTOGRAFÍA</h3>
+                                        <p>LA ESTÉTICA DEL PLANO</p>
+                                        <a href="trabajos/direccion-de-fotografia.html" class="primary__button">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="image-item">
-                    <img src="assets/images/index/solapa_df.jpeg" alt="">
-                    <div class="image-overlay">
-                        <div class="overlay-content">
-                            <h3>DIRECCIÓN DE FOTOGRAFÍA</h3>
-                            <p>LA ESTÉTICA DEL PLANO</p>
-                            <a href="trabajos/direccion-de-fotografia.html" class="primary__button">Ver más</a>
+                            <div class="image-item">
+                                <img src="assets/images/index/alt-2.jpeg" alt="Luces">
+                                <div class="image-overlay">
+                                    <div class="overlay-content">
+                                        <h3>LUCES</h3>
+                                        <p>DISEÑO E ILUMINACIÓN</p>
+                                        <a href="#" class="primary__button">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="image-item">
+                                <img src="assets/images/index/solapa_color.jpeg" alt="Cámara">
+                                <div class="image-overlay">
+                                    <div class="overlay-content">
+                                        <h3>CÁMARA</h3>
+                                        <p>ENFOQUE Y COMPOSICIÓN</p>
+                                        <a href="#" class="primary__button">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="image-item">
+                                <img src="assets/images/index/alt-1.jpeg" alt="Color">
+                                <div class="image-overlay">
+                                    <div class="overlay-content">
+                                        <h3>COLOR</h3>
+                                        <p>GRADING Y CORRECCIÓN DE COLOR</p>
+                                        <a href="#" class="primary__button">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-
-                <div class="image-item">
-                    <img src="assets/images/index/solapa_gaffer.jpeg" alt="">
-                    <div class="image-overlay">
-                        <div class="overlay-content">
-                            <h3>LUCES</h3>
-                            <p>DISEÑO E ILUMINACIÓN</p>
-                            <a href="#" class="primary__button">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="image-item">
-                    <img src="assets/images/index/solapa_color.jpeg" alt="">
-                    <div class="image-overlay">
-                        <div class="overlay-content">
-                            <h3>CÁMARA</h3>
-                            <p>ENFOQUE Y COMPOSICIÓN</p>
-                            <a href="#" class="primary__button">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="image-item">
-                    <img src="assets/images/index/solapa_2da-cam.jpeg" alt="">
-                    <div class="image-overlay">
-                        <div class="overlay-content">
-                            <h3>COLOR</h3>
-                            <p>GRANDING Y CORRECCIÓN DE COLOR</p>
-                            <a href="#" class="primary__button">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-
+                <div class="home-bubble__glow"></div>
             </div>
-    </div>
+        </div>
+    </main>
 
     <!-- FOOTER -->
-    <footer class="footer__nav">
-        <div class="container-fluid py-3 text-center">
-            <div class="row">
-                <div class="col-12">
-                    <p class="footer__nav-text mb-0">&copy; 2026 All Rights Reserved | Camila Battista</p>
-                </div>
-                <div class="col-12 ">
-                    <a href="https://carlaincola.github.io/hello-im-carla/index.html" target="_blank" class="footer__nav-text footer__nav-text-credits">Developed by Carla Íncola</a>
+    <footer class="home-footer">
+        <div class="footer-bubble">
+            <div class="footer-bubble__inner">
+                <div class="footer-bubble__row">
+                    <div class="footer-bubble__col">
+                        <p class="footer-bubble__text">&copy; 2026 All Rights Reserved | Camila Battista</p>
+                    </div>
+                    <div class="footer-bubble__col">
+                        <a href="https://carlaincola.github.io/hello-im-carla/index.html" target="_blank" class="footer-bubble__credit">Developed by Carla Íncola</a>
+                    </div>
                 </div>
             </div>
+            <div class="footer-bubble__glow"></div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
