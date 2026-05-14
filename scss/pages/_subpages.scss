@@ -1,71 +1,320 @@
 @use '../base/variables' as *;
 
+// ============================================
+// VARIABLES
+// ============================================
+$bubble-max-width: 100%;
+$horizontal-margin: 8px;
+$bubble-border-radius: 18px;
+$small-bubble-radius: 18px;
+$gap-between: 8px;
+$navbar-top-margin: 8px;
+$navbar-height: 52px;
 
-// RESET
-.work-body {
+// ============================================
+// BODY
+// ============================================
+.projects-body {
     margin: 0;
     padding: 0;
     background-color: $color-background;
     font-family: $font-family;
+    color: $color-text-primary;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-// MAIN CONTENT - GRID
-
-.work-main {
-    margin-top: 100px;
-    padding-left: 100px;
-    padding-right: 100px;
+// ============================================
+// NAVBAR (reutilizamos nav-bubble existente)
+// ============================================
+.projects-header {
+    position: fixed;
+    top: $navbar-top-margin;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    padding: 0 $horizontal-margin;
+    flex-shrink: 0;
 }
 
-.work-container {
+// ============================================
+// MAIN CONTENT
+// ============================================
+.projects-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: calc($navbar-height + $gap-between) $horizontal-margin $gap-between;
+    margin-top: 0;
+}
+
+.projects-container {
     width: 100%;
-    max-width: 100%;
     margin: 0 auto;
-    padding: 0;
 }
 
-.work-grid {
+// Burbuja principal
+.projects-bubble {
+    position: relative;
+    width: 100%;
+    border-radius: $bubble-border-radius;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        border-radius: calc($bubble-border-radius + 1px);
+        background: $bubble-gradient-background;
+        z-index: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    &__inner {
+        position: relative;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border-radius: $bubble-border-radius;
+        padding: 30px;
+        z-index: 2;
+    }
+    
+    &:hover {
+        &::before { opacity: 0.8; }
+        .projects-bubble__inner { background: rgba(0, 0, 0, 0.4); }
+    }
+}
+
+// ============================================
+// PROJECTS GRID (2 columnas desktop, 1 columna tablet/móvil)
+// ============================================
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    width: 100%;
+    gap: 24px;
+    
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 
-// MOBILE
+// ============================================
+// PROJECTS CARD (sin bordes adicionales)
+// ============================================
+.projects-card {
+    position: relative;
+    width: 100%;
+    border-radius: $small-bubble-radius;
+    
+    &__image-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        border-radius: $small-bubble-radius;
+        background-color: #000;
+    }
+    
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+    
+    &__overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%);
+        width: 100%;
+        height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: height 0.4s ease;
+        overflow: hidden;
+        border-radius: $small-bubble-radius;
+    }
+    
+    &__content {
+        color: white;
+        padding: 20px;
+        transform: translateY(100%);
+        transition: transform 0.4s ease 0.1s;
+    }
+    
+    &__title {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        
+        @media (max-width: 768px) {
+            font-size: 1rem;
+        }
+    }
+    
+    &__button {
+        display: inline-block;
+        padding: 8px 20px;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        text-decoration: none;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            background-color: white;
+            color: black;
+        }
+        
+        @media (max-width: 768px) {
+            padding: 6px 16px;
+            font-size: 0.7rem;
+        }
+    }
+    
+    // Hover effects
+    &:hover {
+        .projects-card__img {
+            transform: scale(1.05);
+        }
+        
+        .projects-card__overlay {
+            height: 100%;
+        }
+        
+        .projects-card__content {
+            transform: translateY(0);
+        }
+    }
+}
+
+// ============================================
+// FOOTER
+// ============================================
+.projects-footer {
+    padding: 0 $horizontal-margin $navbar-top-margin;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+// Reutilizamos footer-bubble existente
+
+.footer-bubble {
+    position: relative;
+    width: 100%;
+    max-width: $bubble-max-width;
+    border-radius: 60px;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        border-radius: 61px;
+        background: $bubble-gradient-background;
+        z-index: 0;
+    }
+    
+    &__inner {
+        position: relative;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(12px);
+        border-radius: 60px;
+        padding: 8px 24px;
+        z-index: 2;
+    }
+    
+    &__glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 60px;
+        background: radial-gradient(circle at center, 
+            rgba(255, 255, 255, 0.06) 0%,
+            transparent 70%
+        );
+        opacity: 0.4;
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        
+        @media (max-width: 768px) {
+            flex-direction: column;
+            text-align: center;
+            gap: 6px;
+        }
+    }
+    
+    &__text {
+        font-size: 11px;
+        color: $color-text-primary;
+        opacity: 0.7;
+        margin: 0;
+    }
+    
+    &__credit {
+        font-size: 11px;
+        color: $color-text-primary;
+        opacity: 0.5;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+        
+        &:hover { opacity: 1; }
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
 @media (max-width: 768px) {
     .work-main {
-        margin-top: 70px;
+        padding: 70px 12px 12px;
+    }
+    
+    .work-bubble__inner {
         padding: 16px;
     }
     
-    .work-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-}
-
-
-
-// ============================================
-// RESPONSIVE: MÓVIL (1 columna)
-// ============================================
-@media (max-width: 768px) {
-    .work-grid {
-        grid-template-columns: 1fr; // 1 columna en móvil
+    .nav-bubble__inner {
+        padding: 6px 16px;
     }
     
-    .work-main {
-        margin-top: 70px;
-    }
-}
-
-// TABLET
-@media (min-width: 769px) and (max-width: 1024px) {
-    .work-card__title {
-        font-size: 1rem;
+    .nav-bubble__logo {
+        font-size: 14px;
     }
     
-    .work-card__subtitle {
-        font-size: 0.8rem;
+    .nav-bubble__item {
+        padding-left: 20px;
+        font-size: 10px;
+    }
+    
+    .footer-bubble__inner {
+        padding: 6px 16px;
     }
 }
