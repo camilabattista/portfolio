@@ -4,8 +4,8 @@
         <!-- SEO METADATA -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Portfolio de Camila Battista | Directora de fotografía, Baffer, specializing in documentaries, music, and fiction. See his work for Armisticio's documentary.">
-        <meta name="keywords" content="filmmaker, filmmaking, Video Editor, post-production, Documentary, Armisticio">
+        <meta name="description" content="Portfolio de Camila Battista | Dirección de fotografía">
+        <meta name="keywords" content="filmmaker, filmmaking, Video Editor, post-production, direccion of photography, gaffer, electrics">
         <meta name="robots" content="index, follow">
         <meta name="author" content="Camila Battista">
 
@@ -20,14 +20,14 @@
         <title>La puerta | Camila Battista</title>
     </head>
     <body class="project-body">
-        <!-- NAV BAR CON BURBUJA (mismo estilo que about) -->
+        <!-- NAV BAR -->
         <header class="project-header">
             <div class="nav-bubble">
                 <div class="nav-bubble__inner">
                     <nav class="nav-bubble__nav" aria-label="Main navigation">
                         <ul class="nav-bubble__menu" role="menubar">
                             <li class="nav-bubble__logo" role="none">
-                                <a class="nav-bubble__link" href="../index.html" role="menuitem" tabindex="0">Camila<br aria-hidden="true"/>Battista</a>
+                                <a class="nav-bubble__link" href="../index.html" role="menuitem" tabindex="0">Camila Battista</a>
                             </li>
                         </ul>
                         <ul class="nav-bubble__menu" role="menubar">
@@ -37,9 +37,6 @@
                             <li class="nav-bubble__item" role="none">
                                 <a class="nav-bubble__link" href="about.html" role="menuitem" tabindex="0">Perfil</a>
                             </li>
-                            <li class="nav-bubble__item" role="none">
-                                <a class="nav-bubble__link" href="#contact" role="menuitem" tabindex="0">Contacto</a>
-                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -47,124 +44,132 @@
             </div>
         </header>
 
-        <!-- MAIN PAGE CON BURBUJA -->
+        <!-- MAIN PAGE -->
         <main class="project-main">
             <div class="project-container">
                 <div class="project-bubble">
                     <div class="project-bubble__inner">
                         
-                        <!-- VIDEO BUBBLE -->
-                        <div class="project-video-bubble">
-                            <div class="project-video-bubble__inner">
-                                <div class="video__container">
-                                    <iframe 
-                                        width="100%" 
-                                        height="100%" 
-                                        src="https://www.youtube.com/embed/JjaoOe3e4QE?si=dYBjHGzVJ78QXrp6" 
-                                        title="Video de La Puerta" 
-                                        aria-label="Video de La Puerta"
-                                        frameborder="0" 
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                        referrerpolicy="strict-origin-when-cross-origin" 
-                                        allowfullscreen>
-                                    </iframe>
-                                </div>
-                            </div>
-                            <div class="project-video-bubble__glow"></div>
-                        </div>
-
-                        <!-- CAROUSEL BUBBLE -->
-                        <div class="project-carousel-bubble">
-                            <div class="project-carousel-bubble__inner">
-                                <div class="carousel-container">
+                        <!-- ========================================== -->
+                        <!-- CAROUSEL (con contenedor alineado) -->
+                        <!-- ========================================== -->
+                        <div class="aligned-container">
+                            <div class="carousel-wrapper">
+                                <!-- Flecha izquierda -->
+                                <a class="carousel-control-prev" href="#projectCarousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                
+                                <!-- Carrusel -->
+                                <div class="carousel">
                                     <div id="projectCarousel" class="carousel slide" data-ride="carousel">
-                                        
                                         <div class="carousel-inner">
+                                            <!-- Slide 1 -->
                                             <div class="carousel-item active">
-                                                <div class="carousel-item-inner">
-                                                    <div class="carousel-item-img">
-                                                        <img src="../../assets/images/works/la-puerta/la-puerta.jpg" alt="La Puerta - Scene 1">
-                                                    </div>
-                                                    <div class="carousel-item-img">
-                                                        <img src="../../assets/images/works/la-puerta/la-puerta-2.jpg" alt="La Puerta - Scene 2">
-                                                    </div>
+                                                <div class="carousel-item-img">
+                                                    <img src="../../assets/images/works/la-puerta/la-puerta.jpg" alt="La Puerta - Scene 1">
                                                 </div>
                                             </div>
-                                            
+                                            <!-- Slide 2 -->
                                             <div class="carousel-item">
-                                                <div class="carousel-item-inner">
-                                                    <div class="carousel-item-img">
-                                                        <img src="../../assets/images/works/la-puerta/la-puerta-3.jpg" alt="La Puerta - Scene 3">
-                                                    </div>
-                                                    <div class="carousel-item-img">
-                                                        <img src="../../assets/images/works/la-puerta/la-puerta-4.jpg" alt="La Puerta - Scene 4">
-                                                    </div>
+                                                <div class="carousel-item-img">
+                                                    <img src="../../assets/images/works/la-puerta/la-puerta-2.jpg" alt="La Puerta - Scene 2">
                                                 </div>
                                             </div>
-                                            
+                                            <!-- Slide 3 -->
                                             <div class="carousel-item">
-                                                <div class="carousel-item-inner">
-                                                    <div class="carousel-item-img">
-                                                        <img src="../../assets/images/works/la-puerta/la-puerta-5.jpg" alt="La Puerta - Scene 5">
-                                                    </div>
-                                                    <div class="carousel-item-img">
-                                                        <img src="../../assets/images/works/la-puerta/la-puerta-6.jpg" alt="La Puerta - Scene 6">
-                                                    </div>
+                                                <div class="carousel-item-img">
+                                                    <img src="../../assets/images/works/la-puerta/la-puerta-3.jpg" alt="La Puerta - Scene 3">
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <a class="carousel-control-prev" href="#projectCarousel" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#projectCarousel" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-carousel-bubble__glow"></div>
-                        </div>
-
-                        <!-- INFO BUBBLE -->
-                        <div class="project-info-bubble">
-                            <div class="project-info-bubble__inner">
-                                <h1 class="project-info__title">La Puerta</h1>
-                                <p class="project-info__detail">Fecha: 2024</p>
-                                <p class="project-info__detail">Rol: Dirección de Fotografía</p>
-                                <p class="project-info__detail">Cliente: Banco Chubut</p>
-                            </div>
-                            <div class="project-info-bubble__glow"></div>
-                        </div>
-
-                        <!-- RELATED WORKS BUBBLE -->
-                        <div class="project-related-bubble">
-                            <div class="project-related-bubble__inner">
-                                <h2 class="project-related__title">TAMBIÉN TE PUEDE INTERESAR</h2>
-                                <div class="container-fluid">
-                                    <div class="row justify-content-center">
-                                        
-                                        <div class="col-10 col-sm-6 col-md-5 col-lg-4 mb-4">
-                                            <div class="related-card">
-                                                <a href="dual.html">
-                                                    <img src="../../assets/images/works/la-puerta/la-puerta.jpg" class="img-fluid" alt="The profile of a man with a braided beard exhaling cigarette smoke.">
-                                                </a>
+                                            <!-- Slide 4 -->
+                                            <div class="carousel-item">
+                                                <div class="carousel-item-img">
+                                                    <img src="../../assets/images/works/la-puerta/la-puerta-4.jpg" alt="La Puerta - Scene 4">
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="col-10 col-sm-6 col-md-5 col-lg-4 mb-4">
-                                            <div class="related-card">
-                                                <a href="reconquest.html">
-                                                    <img src="../../assets/images/works/la-puerta/la-puerta-2.jpg" class="img-fluid" alt="A woman with death eyes, inside a red car.">
-                                                </a>
+                                            <!-- Slide 5 -->
+                                            <div class="carousel-item">
+                                                <div class="carousel-item-img">
+                                                    <img src="../../assets/images/works/la-puerta/la-puerta-5.jpg" alt="La Puerta - Scene 5">
+                                                </div>
+                                            </div>
+                                            <!-- Slide 6 -->
+                                            <div class="carousel-item">
+                                                <div class="carousel-item-img">
+                                                    <img src="../../assets/images/works/la-puerta/la-puerta-6.jpg" alt="La Puerta - Scene 6">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <!-- Flecha derecha -->
+                                <a class="carousel-control-next" href="#projectCarousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
-                            <div class="project-related-bubble__glow"></div>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- VIDEO (mismo contenedor alineado) -->
+                        <!-- ========================================== -->
+                        <div class="aligned-container">
+                            <div class="video__container">
+                                <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    src="https://www.youtube.com/embed/JjaoOe3e4QE?si=dYBjHGzVJ78QXrp6" 
+                                    title="Video de La Puerta" 
+                                    aria-label="Video de La Puerta"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- INFO BUBBLE (mismo contenedor alineado) -->
+                        <!-- ========================================== -->
+                        <div class="aligned-container">
+                            <div class="project-info-bubble">
+                                <div class="project-info-bubble__inner">
+                                    <h1 class="project-info__title">La Puerta</h1>
+                                    <p class="project-info__detail">Fecha: 2024</p>
+                                    <p class="project-info__detail">Rol: Dirección de Fotografía</p>
+                                    <p class="project-info__detail">Cliente: Banco Chubut</p>
+                                </div>
+                                <div class="project-info-bubble__glow"></div>
+                            </div>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- RELATED WORKS -->
+                        <!-- ========================================== -->
+                        <div class="project-related">
+                            <h2 class="project-related__title">TAMBIÉN TE PUEDE INTERESAR</h2>
+                            <div class="container-fluid">
+                                <div class="row justify-content-center">
+                                    <div class="col-10 col-sm-6 col-md-5 col-lg-4 mb-4">
+                                        <div class="related-card">
+                                            <a href="dual.html">
+                                                <img src="../../assets/images/works/la-puerta/la-puerta.jpg" class="img-fluid" alt="The profile of a man with a braided beard exhaling cigarette smoke.">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-10 col-sm-6 col-md-5 col-lg-4 mb-4">
+                                        <div class="related-card">
+                                            <a href="reconquest.html">
+                                                <img src="../../assets/images/works/la-puerta/la-puerta-2.jpg" class="img-fluid" alt="A woman with death eyes, inside a red car.">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -173,7 +178,7 @@
             </div>
         </main>
 
-        <!-- FOOTER CON BURBUJA -->
+        <!-- FOOTER -->
         <footer class="project-footer">
             <div class="footer-bubble">
                 <div class="footer-bubble__inner">

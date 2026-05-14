@@ -3,12 +3,13 @@
 // ============================================
 // VARIABLES
 // ============================================
-$bubble-max-width: 1200px;
-$horizontal-margin: 16px;
-$bubble-border-radius: 28px;
-$small-bubble-radius: 20px;
-$gap-between: 8px;          // ← Cambiado de 20px a 16px (como about)
-$navbar-top-margin: 8px;     // ← Nueva variable para consistencia
+$bubble-max-width: 100%;
+$horizontal-margin: 8px;
+$bubble-border-radius: 18px;
+$small-bubble-radius: 18px;
+$gap-between: 8px;
+$navbar-height: 52px;
+$navbar-top-margin: 8px;
 
 // ============================================
 // BODY
@@ -25,17 +26,17 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
 }
 
 // ============================================
-// NAVBAR (reutilizamos el mismo estilo)
+// NAVBAR
 // ============================================
 .project-header {
     position: fixed;
-    top: $navbar-top-margin;  // ← 8px como en about
+    top: $navbar-top-margin;
     left: 0;
     right: 0;
     z-index: 1000;
     display: flex;
     justify-content: center;
-    padding: 0 $horizontal-margin;  // ← 16px horizontal
+    padding: 0 $horizontal-margin;
     flex-shrink: 0;
 }
 
@@ -53,11 +54,7 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         right: -1px;
         bottom: -1px;
         border-radius: 61px;
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.25),
-            rgba(78, 205, 196, 0.15),
-            rgba(255, 230, 109, 0.25)
-        );
+        background: $bubble-gradient-background;
         z-index: 0;
         transition: opacity 0.3s ease;
     }
@@ -86,12 +83,6 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         z-index: 1;
         pointer-events: none;
         transition: opacity 0.3s ease;
-    }
-    
-    &:hover {
-        &::before { opacity: 0.8; }
-        .nav-bubble__glow { opacity: 0.8; }
-        .nav-bubble__inner { background: rgba(0, 0, 0, 0.45); }
     }
     
     &__nav {
@@ -143,14 +134,12 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
     flex: 1;
     display: flex;
     justify-content: center;
-    padding: calc(68px + $navbar-top-margin + $gap-between) $horizontal-margin $gap-between;
-    // ↑ 60px (altura navbar) + 8px (top margin) + 8px (gap) = 76px
+    padding: calc($navbar-height + $navbar-top-margin) $horizontal-margin $gap-between;
     margin-top: 0;
 }
 
 .project-container {
     width: 100%;
-    max-width: $bubble-max-width;
     margin: 0 auto;
 }
 
@@ -168,25 +157,21 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         right: -1px;
         bottom: -1px;
         border-radius: calc($bubble-border-radius + 1px);
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.25),
-            rgba(78, 205, 196, 0.15),
-            rgba(255, 230, 109, 0.25)
-        );
+        background: $bubble-gradient-background;
         z-index: 0;
         transition: opacity 0.3s ease;
     }
     
     &__inner {
         position: relative;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border-radius: $bubble-border-radius;
-    padding: 30px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: $gap-between;  // ← 8px entre cada elemento interno
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border-radius: $bubble-border-radius;
+        padding: 30px;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-between;
     }
     
     &__glow {
@@ -205,20 +190,127 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         pointer-events: none;
         transition: opacity 0.3s ease;
     }
+}
+
+// ============================================
+// CONTENEDOR ALINEADO (compartido por carousel y video)
+// ============================================
+.aligned-container {
+    width: 90%;
+    margin: 0 auto;
+    
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+// ============================================
+// CAROUSEL (con Grid)
+// ============================================
+.carousel-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 15px;
+    
+    @media (max-width: 768px) {
+        gap: 8px;
+    }
+}
+
+.carousel {
+    grid-column: 2 / 3;
+    overflow: hidden;
+    border-radius: $small-bubble-radius;
+}
+
+.carousel-inner {
+    border-radius: $small-bubble-radius;
+}
+
+.carousel-item-img {
+    width: 100%;
+    
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
+// Flechas estilo bubble
+.carousel-control-prev {
+    grid-column: 1 / 2;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1 !important;
+    transition: all 0.3s ease;
+    z-index: 10;
+    
+    @media (max-width: 768px) {
+        width: 36px;
+        height: 36px;
+    }
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        border-radius: 50%;
+        background: $bubble-gradient-background;
+        z-index: -1;
+    }
+    
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        background: radial-gradient(circle at center, 
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 70%
+        );
+        pointer-events: none;
+    }
     
     &:hover {
-        &::before { opacity: 0.8; }
-        .project-bubble__glow { opacity: 0.8; }
-        .project-bubble__inner { background: rgba(0, 0, 0, 0.4); }
+        background: rgba(0, 0, 0, 0.7);
+        transform: scale(1.05);
     }
 }
 
-// ============================================
-// VIDEO BUBBLE
-// ============================================
-.project-video-bubble {
+.carousel-control-next {
+    grid-column: 3 / 4;
     position: relative;
-    border-radius: $small-bubble-radius;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1 !important;
+    transition: all 0.3s ease;
+    z-index: 10;
+    
+    @media (max-width: 768px) {
+        width: 36px;
+        height: 36px;
+    }
     
     &::before {
         content: "";
@@ -227,123 +319,72 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         left: -1px;
         right: -1px;
         bottom: -1px;
-        border-radius: calc($small-bubble-radius + 1px);
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.2),
-            rgba(78, 205, 196, 0.1),
-            rgba(255, 230, 109, 0.2)
-        );
-        z-index: 0;
+        border-radius: 50%;
+        background: $bubble-gradient-background;
+        z-index: -1;
     }
     
-    &__inner {
-        position: relative;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: $small-bubble-radius;
-        padding: 4px;
-        z-index: 2;
-    }
-    
-    &__glow {
+    &::after {
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        border-radius: $small-bubble-radius;
+        border-radius: 50%;
         background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.1) 0%,
             transparent 70%
         );
-        opacity: 0.4;
-        z-index: 1;
         pointer-events: none;
     }
     
-    .video__container {
-        position: relative;
+    &:hover {
+        background: rgba(0, 0, 0, 0.7);
+        transform: scale(1.05);
+    }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    background-color: transparent;
+    padding: 0;
+    
+    @media (max-width: 768px) {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
+}
+
+// ============================================
+// VIDEO
+// ============================================
+.video__container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;  // 16:9 aspect ratio
+    height: 0;
+    overflow: hidden;
+    border-radius: $small-bubble-radius;
+    
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        padding-bottom: 56.25%; // 16:9 aspect ratio
-        height: 0;
-        overflow: hidden;
+        height: 100%;
         border-radius: $small-bubble-radius;
-        
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: $small-bubble-radius;
-        }
-    }
-}
-
-// ============================================
-// CAROUSEL BUBBLE
-// ============================================
-.project-carousel-bubble {
-    position: relative;
-    border-radius: $small-bubble-radius;
-    
-    &::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        border-radius: calc($small-bubble-radius + 1px);
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.2),
-            rgba(78, 205, 196, 0.1),
-            rgba(255, 230, 109, 0.2)
-        );
-        z-index: 0;
-    }
-    
-    &__inner {
-        position: relative;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: $small-bubble-radius;
-        padding: 4px;
-        z-index: 2;
-    }
-    
-    &__glow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: $small-bubble-radius;
-        background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.08) 0%,
-            transparent 70%
-        );
-        opacity: 0.4;
-        z-index: 1;
-        pointer-events: none;
-    }
-    
-    .carousel-container {
-        border-radius: $small-bubble-radius;
-        overflow: hidden;
-    }
-    
-    .carousel-item-inner {
-        display: flex;
-        gap: 4px;
-        
-        .carousel-item-img {
-            flex: 1;
-            
-            img {
-                width: 100%;
-                height: auto;
-                display: block;
-            }
-        }
     }
 }
 
@@ -362,17 +403,15 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         right: -1px;
         bottom: -1px;
         border-radius: calc($small-bubble-radius + 1px);
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.2),
-            rgba(78, 205, 196, 0.1),
-            rgba(255, 230, 109, 0.2)
-        );
+        background: $bubble-gradient-background;
         z-index: 0;
+        transition: opacity 0.3s ease;
     }
     
     &__inner {
         position: relative;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(8px);
         border-radius: $small-bubble-radius;
         padding: 25px 30px;
         z-index: 2;
@@ -387,12 +426,13 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         bottom: 0;
         border-radius: $small-bubble-radius;
         background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0.08) 0%,
             transparent 70%
         );
         opacity: 0.4;
         z-index: 1;
         pointer-events: none;
+        transition: opacity 0.3s ease;
     }
 }
 
@@ -411,60 +451,19 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
 }
 
 // ============================================
-// RELATED WORKS BUBBLE
+// RELATED WORKS
 // ============================================
-.project-related-bubble {
-    position: relative;
-    border-radius: $small-bubble-radius;
+.project-related {
+    text-align: center;
+    padding: 25px;
     
-    &::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        border-radius: calc($small-bubble-radius + 1px);
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.2),
-            rgba(78, 205, 196, 0.1),
-            rgba(255, 230, 109, 0.2)
-        );
-        z-index: 0;
+    &__title {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        color: $color-text-primary;
     }
-    
-    &__inner {
-        position: relative;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: $small-bubble-radius;
-        padding: 25px;
-        z-index: 2;
-        text-align: center;
-    }
-    
-    &__glow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: $small-bubble-radius;
-        background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.06) 0%,
-            transparent 70%
-        );
-        opacity: 0.4;
-        z-index: 1;
-        pointer-events: none;
-    }
-}
-
-.project-related__title {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-    color: $color-text-primary;
 }
 
 .related-card {
@@ -496,7 +495,7 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
 // FOOTER
 // ============================================
 .project-footer {
-    padding: 0 $horizontal-margin $navbar-top-margin;  // ← 16px lateral, 8px abajo
+    padding: 0 $horizontal-margin $navbar-top-margin;
     background: transparent;
     display: flex;
     justify-content: center;
@@ -517,11 +516,7 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         right: -1px;
         bottom: -1px;
         border-radius: 61px;
-        background: linear-gradient(135deg, 
-            rgba(255, 107, 107, 0.2),
-            rgba(78, 205, 196, 0.1),
-            rgba(255, 230, 109, 0.2)
-        );
+        background: $bubble-gradient-background;
         z-index: 0;
     }
     
@@ -586,7 +581,7 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
 // ============================================
 @media (max-width: 768px) {
     .project-main {
-        padding: 70px 12px 12px;
+        padding: 52px 12px 12px;
     }
     
     .project-bubble__inner {
@@ -602,7 +597,7 @@ $navbar-top-margin: 8px;     // ← Nueva variable para consistencia
         font-size: 22px;
     }
     
-    .project-related-bubble__inner {
+    .project-related {
         padding: 16px;
     }
     
