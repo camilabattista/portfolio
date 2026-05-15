@@ -7,7 +7,7 @@ $bubble-max-width: 100%;
 $horizontal-margin: 8px;
 $bubble-border-radius: 18px;
 $small-bubble-radius: 18px;
-$gap-between: 8px;
+$gap-between: 16px;
 $navbar-height: 52px;
 $navbar-top-margin: 8px;
 
@@ -92,30 +92,65 @@ $navbar-top-margin: 8px;
         width: 100%;
     }
     
-    &__menu {
+    &__back {
+        flex: 1;
         display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        justify-content: flex-start;
         
-        &:first-child { margin-right: auto; }
-        &:last-child { margin-left: auto; }
+        &-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            color: $color-text-primary;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-radius: 50%;
+            
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+                transform: translateX(-2px);
+                text-decoration: none;
+                color: $color-text-primary;
+            }
+        }
     }
     
     &__logo {
-        font-size: 18px;
-        font-weight: 400;
-        text-transform: uppercase;
-        line-height: 24px;
+        flex: 1;
+        text-align: center;
+        
+        .nav-bubble__link {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 24px;
+            text-decoration: none;
+            color: $color-text-primary;
+            transition: opacity 0.2s ease;
+            
+            &:hover {
+                opacity: 0.8;
+            }
+        }
     }
     
-    &__item {
-        padding-left: 50px;
-        font-size: 12px;
-        text-transform: uppercase;
+    &__profile {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
         
-        @media (max-width: 768px) {
-            padding-left: 30px;
+        .nav-bubble__link {
+            font-size: 12px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $color-text-primary;
+            transition: opacity 0.2s ease;
+            
+            &:hover {
+                opacity: 0.8;
+            }
         }
     }
     
@@ -133,67 +168,14 @@ $navbar-top-margin: 8px;
 .project-main {
     flex: 1;
     display: flex;
-    justify-content: center;
-    padding: calc($navbar-height + $navbar-top-margin) $horizontal-margin $gap-between;
+    flex-direction: column;
+    gap: $gap-between;
+    padding: calc($navbar-height + $gap-between) $horizontal-margin $gap-between;
     margin-top: 0;
 }
 
-.project-container {
-    width: 100%;
-    margin: 0 auto;
-}
-
-// Burbuja principal
-.project-bubble {
-    position: relative;
-    width: 100%;
-    border-radius: $bubble-border-radius;
-    
-    &::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        border-radius: calc($bubble-border-radius + 1px);
-        background: $bubble-gradient-background;
-        z-index: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    &__inner {
-        position: relative;
-        background: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(10px);
-        border-radius: $bubble-border-radius;
-        padding: 30px;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        gap: $gap-between;
-    }
-    
-    &__glow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: $bubble-border-radius;
-        background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.06) 0%,
-            transparent 70%
-        );
-        opacity: 0.5;
-        z-index: 1;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-}
-
 // ============================================
-// CONTENEDOR ALINEADO (compartido por carousel y video)
+// CONTENEDOR ALINEADO (controla el ancho del contenido)
 // ============================================
 .aligned-container {
     width: 90%;
@@ -205,7 +187,132 @@ $navbar-top-margin: 8px;
 }
 
 // ============================================
-// CAROUSEL (con Grid)
+// ESTILO BASE PARA TODAS LAS BURBUJAS
+// ============================================
+@mixin bubble-styles {
+    position: relative;
+    border-radius: $small-bubble-radius;
+    width: 100%;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        border-radius: calc($small-bubble-radius + 1px);
+        background: $bubble-gradient-background;
+        z-index: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    &__inner {
+        position: relative;
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(8px);
+        border-radius: $small-bubble-radius;
+        padding: 30px;
+        z-index: 2;
+    }
+    
+    &__glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: $small-bubble-radius;
+        background: radial-gradient(circle at center, 
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 70%
+        );
+        opacity: 0.4;
+        z-index: 1;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    
+    &:hover {
+        &::before { opacity: 0.8; }
+        &__glow { opacity: 0.8; }
+        &__inner { background: rgba(0, 0, 0, 0.35); }
+    }
+}
+
+// ============================================
+// CAROUSEL BUBBLE
+// ============================================
+.carousel-bubble {
+    @include bubble-styles;
+    
+    &__inner {
+        padding: 20px;
+    }
+}
+
+// ============================================
+// VIDEO BUBBLE
+// ============================================
+.video-bubble {
+    @include bubble-styles;
+    
+    &__inner {
+        padding: 20px;
+    }
+}
+
+// ============================================
+// INFO BUBBLE
+// ============================================
+.info-bubble {
+    @include bubble-styles;
+    
+    &__inner {
+        padding: 30px;
+    }
+}
+
+.info-bubble__content {
+    text-align: center;
+}
+
+.info-bubble__title {
+    font-weight: 600;
+    font-size: 28px;
+    color: $color-text-primary;
+    margin-bottom: 16px;
+}
+
+.info-bubble__detail {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+// ============================================
+// RELATED BUBBLE
+// ============================================
+.related-bubble {
+    @include bubble-styles;
+    
+    &__inner {
+        padding: 30px;
+        text-align: center;
+    }
+}
+
+.related-bubble__title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: $color-text-primary;
+}
+
+// ============================================
+// CAROUSEL WRAPPER
 // ============================================
 .carousel-wrapper {
     display: grid;
@@ -368,12 +475,12 @@ $navbar-top-margin: 8px;
 }
 
 // ============================================
-// VIDEO
+// VIDEO CONTAINER
 // ============================================
 .video__container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%;  // 16:9 aspect ratio
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     border-radius: $small-bubble-radius;
@@ -389,87 +496,27 @@ $navbar-top-margin: 8px;
 }
 
 // ============================================
-// INFO BUBBLE
+// RELATED GRID
 // ============================================
-.project-info-bubble {
-    position: relative;
-    border-radius: $small-bubble-radius;
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
     
-    &::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        border-radius: calc($small-bubble-radius + 1px);
-        background: $bubble-gradient-background;
-        z-index: 0;
-        transition: opacity 0.3s ease;
+    @media (max-width: 768px) {
+        gap: 16px;
     }
-    
-    &__inner {
-        position: relative;
-        background: rgba(0, 0, 0, 0.25);
-        backdrop-filter: blur(8px);
-        border-radius: $small-bubble-radius;
-        padding: 25px 30px;
-        z-index: 2;
-        text-align: center;
-    }
-    
-    &__glow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: $small-bubble-radius;
-        background: radial-gradient(circle at center, 
-            rgba(255, 255, 255, 0.08) 0%,
-            transparent 70%
-        );
-        opacity: 0.4;
-        z-index: 1;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-}
-
-.project-info__title {
-    font-weight: 600;
-    font-size: 28px;
-    color: $color-text-primary;
-    margin-bottom: 16px;
-}
-
-.project-info__detail {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 8px;
 }
 
 // ============================================
-// RELATED WORKS
+// RELATED CARD
 // ============================================
-.project-related {
-    text-align: center;
-    padding: 25px;
-    
-    &__title {
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        margin-bottom: 30px;
-        color: $color-text-primary;
-    }
-}
-
 .related-card {
+    position: relative;
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
     
     a {
         display: block;
@@ -479,14 +526,102 @@ $navbar-top-margin: 8px;
         width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.3s ease;
+        transition: transform 0.6s ease;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+    
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 16px;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #FFE66D);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+            border-radius: 3px;
+        }
+    }
+    
+    &__content {
+        color: white;
+        padding: 20px;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.4s ease;
+    }
+    
+    &__title {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        
+        @media (max-width: 768px) {
+            font-size: 0.9rem;
+        }
+    }
+    
+    &__button {
+        display: inline-block;
+        padding: 8px 20px;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        text-decoration: none;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            background-color: white;
+            color: black;
+        }
+        
+        @media (max-width: 768px) {
+            padding: 4px 12px;
+            font-size: 0.6rem;
+        }
     }
     
     &:hover {
         transform: translateY(-5px);
         
         img {
-            transform: scale(1.03);
+            transform: scale(1.08);
+        }
+        
+        .related-card__overlay {
+            opacity: 1;
+        }
+        
+        .related-card__overlay::before {
+            transform: scaleX(1);
+        }
+        
+        .related-card__content {
+            transform: translateY(0);
+            opacity: 1;
         }
     }
 }
@@ -582,26 +717,21 @@ $navbar-top-margin: 8px;
 @media (max-width: 768px) {
     .project-main {
         padding: 52px 12px 12px;
+        gap: 12px;
     }
     
-    .project-bubble__inner {
+    .carousel-bubble__inner,
+    .video-bubble__inner,
+    .info-bubble__inner,
+    .related-bubble__inner {
         padding: 16px;
-        gap: 16px;
     }
     
-    .project-info-bubble__inner {
-        padding: 16px 20px;
-    }
-    
-    .project-info__title {
+    .info-bubble__title {
         font-size: 22px;
     }
     
-    .project-related {
-        padding: 16px;
-    }
-    
-    .project-related__title {
+    .related-bubble__title {
         font-size: 14px;
         margin-bottom: 20px;
     }
@@ -610,12 +740,7 @@ $navbar-top-margin: 8px;
         padding: 6px 16px;
     }
     
-    .nav-bubble__logo {
+    .nav-bubble__logo .nav-bubble__link {
         font-size: 14px;
-    }
-    
-    .nav-bubble__item {
-        padding-left: 20px;
-        font-size: 10px;
     }
 }
